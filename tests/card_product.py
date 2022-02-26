@@ -17,7 +17,7 @@ def test_element_title_name(browser):
     assert_element("[name='option[208]']", browser)
 
 
-def test_element_text_5_titles(browser):
+def test_element_text_titles(browser):
     browser.get("https://demo.opencart.com/index.php?route=product/product&path=25_28&product_id=42")
     assert_element(("[face='Helvetica']"), browser)
 
