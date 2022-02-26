@@ -1,31 +1,26 @@
-from page_objects.LoginAdminPage import LoginAdminPage
+from my_page_objects.My_exceptions import assert_element
 
 
-def test_login_page_external(browser):
-    browser.get(browser.url + "/admin")
-    browser.find_element(*LoginAdminPage.USERNAME_INPUT)
-    browser.find_element(*LoginAdminPage.PASSWORD_INPUT)
-    browser.find_element(*LoginAdminPage.SUBMIT_BUTTON)
-    browser.find_element(*LoginAdminPage.FORGOTTEN_PASSWORD)
-    browser.find_element(*LoginAdminPage.OPENCART_LINK)
+def test_login_element(browser):
+    browser.get("https://demo.opencart.com/admin/")
+    assert_element("[name='username']", browser)
 
 
-def test_correct_all(browser):
-    browser.get(browser.url + "/admin")
-    browser.find_element(*LoginAdminPage.USERNAME_INPUT).send_keys("user")
-    browser.find_element(*LoginAdminPage.PASSWORD_INPUT).send_keys("bitnami")
-    browser.find_element(*LoginAdminPage.SUBMIT_BUTTON).click()
+def test_password_element(browser):
+    browser.get("https://demo.opencart.com/admin/")
+    assert_element("[name='password']", browser)
 
 
-def test_incorrect_login(browser):
-    browser.get(browser.url + "/admin")
-    browser.find_element(*LoginAdminPage.USERNAME_INPUT).send_keys("user3")
-    browser.find_element(*LoginAdminPage.PASSWORD_INPUT).send_keys("bitnami")
-    browser.find_element(*LoginAdminPage.SUBMIT_BUTTON).click()
+def test_login_link_forget_password(browser):
+    browser.get("https://demo.opencart.com/admin/")
+    assert_element("[href='https://demo.opencart.com/admin/index.php?route=common/forgotten']", browser)
 
 
-def test_incorrect_password(browser):
-    browser.get(browser.url + "/admin")
-    browser.find_element(*LoginAdminPage.USERNAME_INPUT).send_keys("user")
-    browser.find_element(*LoginAdminPage.PASSWORD_INPUT).send_keys("bitnami3")
-    browser.find_element(*LoginAdminPage.SUBMIT_BUTTON).click()
+def test_button_submit(browser):
+    browser.get("https://demo.opencart.com/admin/")
+    assert_element("[type='submit']", browser)
+
+
+def test_login_link_opencart(browser):
+    browser.get("https://demo.opencart.com/admin/")
+    assert_element("[href='http://www.opencart.com']", browser)
