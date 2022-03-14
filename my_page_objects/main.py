@@ -11,3 +11,22 @@ class Main(BasePage):
     def browser_url(browser):
         browser.get("https://demo.opencart.com/")
 
+    def element_search(browser):
+        Main.browser_url(browser)
+        BasePage.assert_element(Main.SEARCH, browser)
+
+    def element_cameras(browser):
+        Main.browser_url(browser)
+        BasePage.assert_element(Main.CAMERAS, browser)
+
+    def image_phone(browser):
+        Main.browser_url(browser)
+        BasePage.assert_element(Main.PHONE, browser)
+
+    def title(browser):
+        Main.browser_url(browser)
+        BasePage.wait_title(Main.TITLE, browser)
+
+    def elemesnt_search(browser):
+        Main.browser_url(browser)
+        BasePage.assert_element(Main.ELEMENT_SEARCH, browser)

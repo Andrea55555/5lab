@@ -10,3 +10,23 @@ class AdminPage(BasePage):
 
     def browser_url(browser):
         browser.get("https://demo.opencart.com/admin/")
+
+    def login_element(browser):
+        AdminPage.browser_url(browser)
+        BasePage.assert_element(AdminPage.USERNAME_INPUT_LOGIN, browser)
+
+    def password_element(browser):
+        AdminPage.browser_url(browser)
+        BasePage.assert_element(AdminPage.USERNAME_INPUT_PASSWORD, browser)
+
+    def login_link_forget_password(browser):
+        AdminPage.browser_url(browser)
+        BasePage.assert_element(AdminPage.LOGIN_LINK_FORGET_PASSWORD, browser)
+
+    def button_submit(browser):
+        AdminPage.browser_url(browser)
+        BasePage.assert_element(AdminPage.BUTTON_TYPE_SUBMIT, browser)
+
+    def login_link_opencart(browser):
+        AdminPage.browser_url(browser)
+        BasePage.assert_element(AdminPage.LOGIN_LINK_OPENCART, browser)

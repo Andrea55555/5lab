@@ -7,130 +7,104 @@ from my_page_objects.register_account import Register
 from my_page_objects.registerpage import RegisterPage
 
 
-
 def test_login_element(browser):
-    AdminPage.browser_url(browser)
-    BasePage.assert_element(AdminPage.USERNAME_INPUT_LOGIN, browser)
+    AdminPage.login_element
 
 
 def test_password_element(browser):
-    AdminPage.browser_url(browser)
-    BasePage.assert_element(AdminPage.USERNAME_INPUT_PASSWORD, browser)
+    AdminPage.password_element
 
 
 def test_login_link_forget_password(browser):
-    AdminPage.browser_url(browser)
-    BasePage.assert_element(AdminPage.LOGIN_LINK_FORGET_PASSWORD, browser)
+    AdminPage.login_link_forget_password
 
 
 def test_button_submit(browser):
-    AdminPage.browser_url(browser)
-    BasePage.assert_element(AdminPage.BUTTON_TYPE_SUBMIT, browser)
+    AdminPage.button_submit
 
 
 def test_login_link_opencart(browser):
-    AdminPage.browser_url(browser)
-    BasePage.assert_element(AdminPage.LOGIN_LINK_OPENCART, browser)
+    AdminPage.login_link_opencart
 
 
 def test_element_checkbox(browser):
-    CardProduct.browser_url(browser)
-    BasePage.assert_element(CardProduct.ELEMENT_CHECKBOX, browser)
+    CardProduct.element_checkbox
 
 
 def test_title_card_product(browser):
-    CardProduct.browser_url(browser)
-    BasePage.wait_title(CardProduct.TITLE, browser)
+    CardProduct.title_card_product
 
 
 def test_element_title_name(browser):
-    CardProduct.browser_url(browser)
-    BasePage.assert_element(CardProduct.TITLE_NAME, browser)
+    CardProduct.element_title_name
 
 
 def test_element_text_titles(browser):
-    CardProduct.browser_url(browser)
-    BasePage.assert_element(CardProduct.TITLE_TEXT, browser)
+    CardProduct.element_text_titles
 
 
 def test_element_photo(browser):
-    CardProduct.browser_url(browser)
-    BasePage.assert_element(CardProduct.ELEMENT_PHOTO, browser)
+    CardProduct.element_photo
 
 
 def test_element_monitor(browser):
-    Catalog.browser_url(browser)
-    BasePage.assert_element(Catalog.ELEMENT_MONITOR, browser)
+    Catalog.element_monitor
 
 
 def test_element_second_monitor(browser):
-    Catalog.browser_url(browser)
-    BasePage.assert_element(Catalog.SECOND_MONITOR, browser)
+    Catalog.element_second_monitor
 
 
 def test_title_catalog(browser):
-    Catalog.browser_url(browser)
-    BasePage.wait_title(Catalog.TITLE, browser)
+    Catalog.title_catalog
 
 
 def test_element_list_view(browser):
-    Catalog.browser_url(browser)
-    BasePage.assert_element(Catalog.LIST_VIEW, browser)
+    Catalog.element_list_view
 
 
 def test_element_product_compare(browser):
-    Catalog.browser_url(browser)
-    BasePage.assert_element(Catalog.PRODUCT_COMPARE, browser)
+    Catalog.element_product_compare
 
 
 def test_element_search(browser):
-    Main.browser_url(browser)
-    BasePage.assert_element(Main.SEARCH, browser)
+    Main.element_search
 
 
 def test_element_cameras(browser):
-    Main.browser_url(browser)
-    BasePage.assert_element(Main.CAMERAS, browser)
+    Main.element_cameras
 
 
 def test_image_phone(browser):
-    Main.browser_url(browser)
-    BasePage.assert_element(Main.PHONE, browser)
+    Main.image_phone
 
 
 def test_title(browser):
-    Main.browser_url(browser)
-    BasePage.wait_title(Main.TITLE, browser)
+    Main.title
 
 
 def test_elemesnt_search(browser):
-    Main.browser_url(browser)
-    BasePage.assert_element(Main.ELEMENT_SEARCH, browser)
+    Main.elemesnt_search
 
 
 def test_element_first_name(browser):
-    Register.browser_url(browser)
-    BasePage.assert_element(Register.FIRST_NAME, browser)
+    Register.element_first_name
 
 
 def test_title_register(browser):
-    Register.browser_url(browser)
-    BasePage.wait_title(Register.TITLE, browser)
+    Register.title_register
 
 
 def test_element_checkbox_register(browser):
-    Register.browser_url(browser)
-    BasePage.assert_element(Register.CHECKBOX, browser)
+    Register.element_checkbox_register
 
 
 def test_element_password(browser):
-    Register.browser_url(browser)
-    BasePage.assert_element(Register.PASSWORD, browser)
+    Register.element_password
 
 
 def test_element_newsletter(browser):
-    Register.browser_url(browser)
-    BasePage.assert_element(Register.NEWSLETTER, browser)
+    Register.element_newsletter
 
 
 def test_user_registration(browser):
