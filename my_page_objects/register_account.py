@@ -15,21 +15,17 @@ class Register(BasePage):
         Register.browser_url(browser)
         BasePage.assert_element(Register.FIRST_NAME, browser)
 
-
     def title_register(browser):
         Register.browser_url(browser)
         BasePage.wait_title(Register.TITLE, browser)
-
 
     def element_checkbox_register(browser):
         Register.browser_url(browser)
         BasePage.assert_element(Register.CHECKBOX, browser)
 
-
     def element_password(browser):
         Register.browser_url(browser)
         BasePage.assert_element(Register.PASSWORD, browser)
-
 
     def element_newsletter(browser):
         Register.browser_url(browser)
