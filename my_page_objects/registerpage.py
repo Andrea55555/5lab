@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 
 from .basepage import BasePage
@@ -20,7 +21,8 @@ class RegisterPage(BasePage):
     }
 
     def open_page(self):
-        self.browser.get(self.browser.url)
+        with allure.step(f"Открывается страница {self.browser.url}"):
+            self.browser.get(self.browser.url)
         self._find_element_and_click(self.MY_ACCOUNT_BTN)
         self._find_element_and_click(self.REGISTER_BTN)
 
@@ -34,3 +36,5 @@ class RegisterPage(BasePage):
     def success_register_message(self):
         msg = self._verify_element_visibility(self.SUCCESS_MESSAGE)
         return msg.text
+
+

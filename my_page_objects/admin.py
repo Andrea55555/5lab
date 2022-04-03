@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 
 from .basepage import BasePage
@@ -20,12 +21,14 @@ class AdminPage(BasePage):
     PRODUCTS_LIST = (By.CSS_SELECTOR, "#form-product table")
 
     def open_page(self):
-        self.browser.get(self.browser.url + "/admin/")
+        url = self.browser.url + "/admin"
+        with allure.step(f"Открывается страница {url}"):
+            self.browser.get(url)
 
     def login(self):
         self._fill_input_field(self.USERNAME_INPUT, "user")
         self._fill_input_field(self.PASSWORD_INPUT, "bitnami")
-        self._verify_element_visibility(self.LOGIN_BTN).click()
+        self._find_element_and_click(self.LOGIN_BTN)
 
     def open_products_list(self):
         self._find_element_and_click(self.MENU_CATALOG_BTN)
