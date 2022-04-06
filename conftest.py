@@ -81,7 +81,7 @@ def driver_factory(request):
 
 @pytest.fixture
 def browser(request):
-    url = request.config.getoption("--url")
+    base_url = request.config.getoption("--base_url")
     log_level = request.config.getoption("--log_level")
     test_name = request.node.name
 
@@ -92,7 +92,7 @@ def browser(request):
     driver.maximize_window()
     driver.test_name = test_name
     driver.log_level = log_level
-    driver.url = url
+    driver.url = base_url
     driver.logger = logger
 
     logger.info("Browser: {}".format(driver.capabilities))
@@ -102,3 +102,8 @@ def browser(request):
         logger.info("===> Test {} finished at {}".format(test_name, datetime.datetime.now()))
     request.addfinalizer(fin)
     return driver
+
+
+@pytest.fixture(scope="session")
+def base_url(request):
+    return request.config.getoption("--url")
