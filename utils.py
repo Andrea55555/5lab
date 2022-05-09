@@ -1,6 +1,10 @@
 import logging
 import os
 
+path = os.getcwd()
+if not os.path.isdir("logs"):
+    os.mkdir("logs")
+
 
 def setup_logging(log_level, test_name):
     check_and_create_logging_dir()

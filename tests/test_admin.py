@@ -1,8 +1,10 @@
 import allure
+import pytest
 
 from my_page_objects.admin import AdminPage
 
 
+@pytest.mark.skip
 @allure.feature('Admin')
 class TestAdmin:
 
