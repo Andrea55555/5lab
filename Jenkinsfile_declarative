@@ -1,11 +1,12 @@
 pipeline {
     agent any
     
-    def alluredir = 'allure results'
+    environment { 
+      alluredir = 'allure results'
+    }
 
     stages {
-        def alluredir = 'allure results'
-
+  
         stage('Setup parameters') {
             steps {
                 script {                     
@@ -40,8 +41,8 @@ pipeline {
                   PATH=$PATH:$WORKSPACE
                   python3 -m venv venv
                   . venv/bin/activate
-                  pip3 install -r requirements.txt
-                  pytest -v tests/test_opencart.py --junitxml=report.xml --url=$TARGET_APP_URL --browser=$BROWSER --executor=$EXECUTOR_URL --alluredir=${alluredir}
+                  pip3 install -r tests/requirements.txt
+                  pytest -v tests/test_opencart.py --junitxml=report.xml --url=$TARGET_APP_URL --browser=$BROWSER --executor=$EXECUTOR_URL --alluredir=$alluredir
                 """
             }
         }
@@ -58,7 +59,7 @@ pipeline {
                         jdk: '',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
-                        results: [[path: alluredir]]
+                        results: [[path: env.alluredir]]
                     ])
                 }
             }
