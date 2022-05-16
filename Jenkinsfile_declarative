@@ -1,5 +1,7 @@
 pipeline {
     agent any
+    
+    def alluredir = 'allure results'
 
     stages {
         def alluredir = 'allure results'
