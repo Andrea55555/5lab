@@ -21,7 +21,7 @@ pipeline {
                                 defaultValue: '', 
                                 name: 'EXECUTOR_URL', 
                                 trim: true
-                            )
+                            ),
                             string(
                                 defaultValue: '', 
                                 name: 'TARGET_APP_URL', 
