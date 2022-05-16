@@ -37,12 +37,13 @@ pipeline {
         }
         stage('test') {
             steps {
+              //  pytest -v tests/test_opencart.py --junitxml=report.xml --url=$TARGET_APP_URL --browser=$BROWSER --executor=$EXECUTOR_URL --alluredir=$alluredir
               sh """
                   PATH=$PATH:$WORKSPACE
                   python3 -m venv venv
                   . venv/bin/activate
                   pip3 install -r tests/requirements.txt
-                  pytest -v tests/test_opencart.py --junitxml=report.xml --url=$TARGET_APP_URL --browser=$BROWSER --executor=$EXECUTOR_URL --alluredir=$alluredir
+                  pytest -v tests/test_opencart.py --junitxml=report.xml --alluredir=$alluredir
                 """
             }
         }
