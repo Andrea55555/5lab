@@ -18,6 +18,6 @@ def setup_logging(log_level, test_name):
 
 
 def check_and_create_logging_dir():
-    allure_logging_dir = os.path.join("C:\\", "d", "5lab", "tests", "allure-results")
+    allure_logging_dir = os.path.join("C:\\", "d", "5lab", "../tests", "allure-results")
     if not os.path.exists(allure_logging_dir):
         os.mkdir(allure_logging_dir)

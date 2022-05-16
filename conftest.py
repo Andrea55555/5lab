@@ -6,7 +6,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
-from utils import setup_logging
+from myutils.utils import setup_logging
 
 DRIVERS_DIRECTORY = os.path.expanduser("~/Dev/drivers")
 
