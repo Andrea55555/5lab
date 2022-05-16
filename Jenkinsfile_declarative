@@ -2,19 +2,44 @@ pipeline {
     agent any
 
     stages {
-        stage('build') {
+        def alluredir = 'allure results'
+
+        stage('Setup parameters') {
             steps {
-                sh 'g++ main.cpp -o simple-db'
+                script {                     
+                    properties([
+                        parameters([
+                            choice(
+                                choices: ['chrome', 'firefox', 'opera'], 
+                                name: 'BROWSER'
+                            ),
+                            choice(
+                                choices: ['last_stable', 'y', 'x'], 
+                                name: 'BROWSER_VESION'
+                            ),
+                            string(
+                                defaultValue: '', 
+                                name: 'EXECUTOR_URL', 
+                                trim: true
+                            )
+                            string(
+                                defaultValue: '', 
+                                name: 'TARGET_APP_URL', 
+                                trim: true
+                            )
+                        ])
+                    ])
+                }
             }
         }
         stage('test') {
             steps {
-				sh """
-				    PATH=$PATH:$WORKSPACE
-				    python3 -m venv venv
-				    . venv/bin/activate
-				    pip3 install -r requirements.txt
-				    pytest -v tests/test_simple_db.py --junitxml=report.xml
+              sh """
+                  PATH=$PATH:$WORKSPACE
+                  python3 -m venv venv
+                  . venv/bin/activate
+                  pip3 install -r requirements.txt
+                  pytest -v tests/test_opencart.py --junitxml=report.xml --url=$TARGET_APP_URL --browser=$BROWSER --executor=$EXECUTOR_URL --alluredir=${alluredir}
                 """
             }
         }
@@ -31,17 +56,10 @@ pipeline {
                         jdk: '',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
-                        results: [[path: 'allure-results']]
+                        results: [[path: alluredir]]
                     ])
                 }
             }
-        }
-        stage('email') {
-           steps {
-                emailext body: '$DEFAULT_CONTENT',
-                         subject: '$DEFAULT_SUBJECT',
-                         to: 'agridyaev.otus@gmail.com'
-           }
         }
     }
 }
